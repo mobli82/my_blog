@@ -12,8 +12,8 @@ body {
     margin: 0;
   }
   
-  .bg-steel {
-    background-color: #5f788a;
+  .bg-green {
+    background-color: #0e7958;
   }
   
   .site-header .navbar-nav .nav-link {
@@ -82,3 +82,6 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+  .footer-color{
+    color: white;
+   }
