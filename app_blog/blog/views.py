@@ -39,6 +39,7 @@ class PostDetailView(DetailView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
+    template_name = 'blog/post_update.html'
     
     def test_func(self):
         post = self.get_object()
