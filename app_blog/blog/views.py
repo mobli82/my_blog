@@ -40,6 +40,14 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
     model = Post
     fields = ['title', 'content']
     template_name = 'blog/post_update.html'
+    success_message = '%(title)s has been Updated'
+
+    def get_success_message(self, title):
+        return self.success_message % dict(
+            title,
+            calculated_field=self.object.title,
+        )
+
     
     def test_func(self):
         post = self.get_object()
@@ -50,3 +58,4 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
