@@ -5,6 +5,7 @@ from django.views.generic import (ListView,
                                   CreateView,
                                   DetailView,
                                   UpdateView,
+                                  DeleteView,
 )
 
 from .models import Post
@@ -59,3 +60,13 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    template_name = 'blog/post_delete.html'
+    success_url = '/blog/posts'
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False

@@ -6,8 +6,10 @@
         <div class="article-metadata">
             <a class="mr-2" href="#">{{ object.author }}</a>
             <small class="text-muted">{{ object.date_posted|date:"d, F, Y" }}</small>
-            <a href="{% url 'post-update' object.id %}" class="ml-3 text-warning">Update</a>
-            <a href="#" class="ml-3 text-danger">Delete</a>
+            {% if object.author == user %}
+                <a href="{% url 'post-update' object.id %}" class="ml-3 text-warning">Update</a>
+                <a href="{% url 'post-delete' object.id %}" class="ml-3 text-danger">Delete</a>
+            {% endif %}
         </div>
         <h2><a class="article-title">{{ object.title }}</a></h2>
         <p class="article-content">{{ object.content }}</p>
