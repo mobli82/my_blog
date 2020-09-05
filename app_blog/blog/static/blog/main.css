@@ -88,3 +88,9 @@ body {
    .footer-height{
     height: 25px;
    }
+  .nav-font{
+    font-size: 25px;
+  }
+  .nav-logo{
+    color: #dddddd;
+  }
