@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
+    <h3 class="mb-3">Posts by: {{ view.kwargs.username }} </h3>
     {% for post in posts %}
         <article class="media content-section">
           <div class="media-body">
