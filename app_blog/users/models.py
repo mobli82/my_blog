@@ -15,6 +15,6 @@ class Profile(models.Model):
         image = Image.open(self.profile_img.path)
 
         if image.height > 120 and image.width > 120:
-            size = (120, 120)
+            size = (80, 80)
             image.thumbnail(size)
             image.save(self.profile_img.path)
