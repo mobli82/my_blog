@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #testting django module
     #cripy forms
     'crispy_forms',
     #my_apps
-    'blog.apps.BlogConfig',
-    'users.apps.UsersConfig',
+    'blog',
+    'users',
 ]
 
 MIDDLEWARE = [

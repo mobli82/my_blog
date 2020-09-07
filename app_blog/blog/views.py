@@ -11,18 +11,19 @@ from django.views.generic import (ListView,
 
 from .models import Post
 
-class PostListView(ListView):
+class PostsListView(ListView):
     model = Post
     template_name = 'blog/posts_blog.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
 
-class UserPostListView(ListView):
+class UserPostsListView(ListView):
     model = Post
     template_name = 'blog/posts_user.html'
     context_object_name = 'posts'
 
-    def get_queryset(self):
+    def get_queryset(self,):
+        super(UserPostsListView, self).get_queryset()
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.all().filter(author=user).order_by('-date_posted')
     
@@ -39,6 +40,7 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
     
     def get_success_message(self, title):
+        # super(PostCreateView, self).get_success_message(cleaned_data=title)
         return self.success_message % dict(
             title,
             calculated_field=self.object.title,
