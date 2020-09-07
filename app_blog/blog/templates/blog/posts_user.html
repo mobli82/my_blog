@@ -14,4 +14,26 @@
           </div>
         </article>
     {% endfor %}
+	<div>
+		{% if is_paginated %}
+			{% if page_obj.has_previous %}
+				<a href="?page=1" class='btn btn-warning'>First</a>
+				<a href="?page={{ page_obj.previous_page_number }}" class='btn btn-warning'>Prev</a>
+			{% endif %}
+			{% for page in page_obj.paginator.page_range %}
+					{% if page == page_obj.number %}
+						<a href="?page={{ page }}" class='btn btn-warning'>{{ page }}</a>
+					
+					{% elif page > page_obj.number|add:'-2' and page < page_obj.number|add:'2'%}
+						<a href="?page={{ page }}" class='btn btn-outline-warning'>{{ page }}</a>
+					{% endif %}
+
+			{% endfor %}
+
+			{% if page_obj.has_next %}
+				<a href="?page={{ page_obj.next_page_number }}"class='btn btn-warning'>Next</a>
+				<a href="?page={{ page_obj.paginator.num_pages }}" class='btn btn-warning'>Last</a>
+			{% endif %}	
+		{% endif %}
+	</div>
 {% endblock content %}
