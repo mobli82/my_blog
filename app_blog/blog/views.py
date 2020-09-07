@@ -16,11 +16,13 @@ class PostsListView(ListView):
     template_name = 'blog/posts_blog.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
+    paginate_by = 2
 
 class UserPostsListView(ListView):
     model = Post
     template_name = 'blog/posts_user.html'
     context_object_name = 'posts'
+    paginate_by = 2
 
     def get_queryset(self,):
         super(UserPostsListView, self).get_queryset()
