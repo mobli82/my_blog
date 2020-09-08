@@ -143,7 +143,7 @@ class TestPostsListView(TestCase):
         self.assertEqual(response.status_code, 302)
         
         # print(Post.objects.all())
-        print(request.content)
+        # print(request.content)
         self.assertEqual(request.context['post'].title, 'First Post Updated')
         self.assertFalse(post.id == request.context['user'].id)
         
